@@ -1,0 +1,11 @@
+.masterContainer
+  .page-header
+    = link_to forms_path, :class => 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_form_path(@form), :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h2= "Applicant: " + @form.first_name + " " + @form.last_name
+
+  = render 'form'

@@ -1,0 +1,8 @@
+.masterContainer
+  .page-header
+    = link_to forms_path, :class => 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    %h1 New Application
+
+  = render 'form'

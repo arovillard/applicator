@@ -1,0 +1,42 @@
+.masterContainer
+  .page-header
+    = link_to new_form_path, :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Form
+    %h1 Applications
+
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Application Date
+          %th Last name
+          %th First name
+          %th Age
+          %th Main intersection
+          %th Cellphone
+          %th House phone
+          %th Email
+          %th Legal to work
+          %th Car owner
+          %th
+          %th
+          %th
+
+      %tbody
+        - @forms.each do |form|
+          - what_age = compute_age(form)
+          %tr
+            %td= form.created_at.strftime('%F')
+            %td= form.last_name
+            %td= form.first_name
+            %td= what_age
+            %td= form.main_intersection
+            %td= form.cellphone
+            %td= form.house_phone
+            %td= form.email
+            %td= form.legal_to_work.humanize
+            %td= form.car_owner.humanize
+            %td= link_to 'Show', form
+            %td= link_to 'Edit', edit_form_path(form)
+            %td= link_to 'Destroy', form, :data => { confirm: 'Are you sure?' }, :method => :delete

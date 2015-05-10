@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree
+ *= require_self
+ */
+
+.masterContainer{
+  padding: 0 100px;
+}
+
+.accordionSpacer{
+  padding: 20px 40px;
+}
+
+/*!
+ * Sample styles for jQuery accordion wizard based on bootstrap
+ * Original author: @stephen_thomas
+ * Licensed under the MIT license
+ */ol.acc-wizard-sidebar{counter-reset:acc-wizard-counter;margin-left:0;padding-left:0}ol.acc-wizard-sidebar li{position:relative;margin:0 0 .5em 2em;padding:.25em .75em;list-style:none}ol.acc-wizard-sidebar li:before{content:counter(acc-wizard-counter);counter-increment:acc-wizard-counter;position:absolute;left:-2em;top:50%;margin-top:-1.3em;height:2em;width:2em;line-height:2em;border:0;text-align:center;font-weight:700;color:#fff;border-radius:2em}ol.acc-wizard-sidebar li a{color:#333}ol.acc-wizard-sidebar li:before{background:#333}ol.acc-wizard-sidebar li.acc-wizard-completed,ol.acc-wizard-sidebar li.acc-wizard-completed a{color:#999}ol.acc-wizard-sidebar li.acc-wizard-completed:before{background:#999}ol.acc-wizard-sidebar li.acc-wizard-completed:after{display:inline-block;vertical-align:middle;font-size:1.33333333em;width:1.875em;content:"\00a0\2713";position:relative;bottom:.1em}ol.acc-wizard-sidebar li.acc-wizard-active,ol.acc-wizard-sidebar li.acc-wizard-active a{color:#08c}ol.acc-wizard-sidebar li.acc-wizard-active:before{background:#08c}ol.acc-wizard-sidebar li:first-child{margin-top:.75em}.acc-wizard-step{margin-top:2em}.panel-heading{height:2.6em;position:relative;z-index:1}.panel-collapse{padding-top:2.6em;margin-top:-2.6em}
+
+.progressBar li {
+  display: inline-block;
+}
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}

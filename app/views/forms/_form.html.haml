@@ -1,0 +1,562 @@
+= form_for @form, :html => { :class => "form-horizontal", :role => "form" } do |f|
+  -if @form.errors.any?
+    .alert.alert-danger.alert-dismissable{:role => "alert"}
+      %button.close{:type => "button", :data => {:dismiss => "alert"} }
+        span{:aria => {:hidden => "true"} } &times;
+        span.sr-only Close
+      %h4= "#{pluralize(@form.errors.count, "error")} prohibited this form from being saved:"
+
+      %ul
+        - @form.errors.full_messages.each do |msg|
+          %li= msg
+
+  .acc-wizard
+    %ol.acc-wizard-sidebar.progressBar
+      %li.acc-wizard-todo
+        %a{:href => "#desiredPosition"} Desired Position and Availability
+      %li.acc-wizard-todo
+        %a{:href => "#personalInformation"} Personal Information
+      %li.acc-wizard-todo
+        %a{:href => "#generalQuestions"} General Questions
+      %li.acc-wizard-todo
+        %a{:href => "#educationAndWorkHistory"} Education and Work History
+
+
+    #accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+      .panel.panel-default
+        #headingOne.panel-heading{:role => "tab"}
+          %h4.panel-title
+            %a{"aria-controls" => "desiredPosition", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#desiredPosition"}
+              Desired Position and Availability
+        #desiredPosition.panel-collapse.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+          .panel-body.accordionSpacer
+            .row
+              .col-md-3
+                .form-group
+                  = f.label :position_required, :class => 'control-label'
+                  = f.text_field :position_required, :class => 'form-control'
+              .col-md-1
+              .col-md-3
+                .form-group
+                  = f.label :available_from, :class => 'control-label'
+                  = f.text_field :available_from, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-sm-4
+                %h4 Select what shifts interests you
+              .col-sm-1
+                .form-group
+                  = f.label :shift_day,"Day", :class => 'control-label'
+                  = f.check_box :shift_day, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_afternoon,"Afternoon", :class => 'control-label'
+                  = f.check_box :shift_afternoon, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_night,"Night", :class => 'control-label'
+                  = f.check_box :shift_night, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_overnight,"Overnight", :class => 'control-label'
+                  = f.check_box :shift_overnight, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_weekdays,"Weekdays", :class => 'control-label'
+                  = f.check_box :shift_weekdays, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_weekends,"Weekends", :class => 'control-label'
+                  = f.check_box :shift_weekends, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :shift_overtime,"Overtime", :class => 'control-label'
+                  = f.check_box :shift_overtime, :class => 'form-control'
+
+            .acc-wizard-step
+              %button.btn.btn-primary{:type => "submit"} Next Step
+
+      .panel.panel-default
+        #headingTwo.panel-heading{:role => "tab"}
+          %h4.panel-title
+            %a.collapsed{"aria-controls" => "personalInformation", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#personalInformation"}
+              Personal Information
+        #personalInformation.panel-collapse.collapse.in{"aria-labelledby" => "headingTwo", :role => "tabpanel"}
+          .panel-body.accordionSpacer
+            .row
+              .col-md-3
+                .form-group
+                  = f.label :last_name, :class => 'control-label'
+                  = f.text_field :last_name, :class => 'form-control'
+              .col-md-1
+              .col-md-3
+                .form-group
+                  = f.label :first_name, :class => 'control-label'
+                  = f.text_field :first_name, :class => 'form-control'
+              .col-md-4
+                .row
+                  .col-md-4
+                    %h4 Gender
+                  .col-md-1
+                  .col-md-7
+                    .row
+                      .col-xs-3
+                        .form-group
+                          = f.label "Male", :class => 'control-label'
+                          = f.check_box :gender_male, :class => 'form-control'
+                      .col-xs-3
+                        .form-group
+                          = f.label "Female", :class => 'control-label'
+                          = f.check_box :gender_female, :class => 'form-control'
+                      .col-xs-3
+                        .form-group
+                          = f.label "Other", :class => 'control-label'
+                          = f.check_box :gender_other, :class => 'form-control'
+
+            .row
+              .col-md-4
+                .form-group
+                  = f.label :address, :class => 'control-label'
+                  = f.text_field :address, :class => 'form-control'
+              .col-md-1
+              .col-md-4
+                .form-group
+                  = f.label :main_intersection, :class => 'control-label'
+                  = f.text_field :main_intersection, :class => 'form-control'
+              .col-md-1
+              .col-md-2
+                .form-group
+                  = f.label :postal_code, :class => 'control-label'
+                  = f.text_field :postal_code, :class => 'form-control'
+
+            .row
+              .col-md-3
+                .form-group
+                  = f.label :email, :class => 'control-label'
+                  = f.text_field :email, :class => 'form-control'
+              .col-md-1
+              .col-md-3
+                .form-group
+                  = f.label :cellphone, :class => 'control-label'
+                  = f.text_field :cellphone, :class => 'form-control'
+              .col-md-1
+              .col-md-3
+                .form-group
+                  = f.label :house_phone, :class => 'control-label'
+                  = f.text_field :house_phone, :class => 'form-control'
+
+            .row
+              .col-md-3
+                .form-group
+                  = f.label :nationality, :class => 'control-label'
+                  = f.text_field :nationality, :class => 'form-control'
+              .col-md-1
+              .col-md-4
+                .form-group
+                  = f.label :birthday, :class => 'control-label'
+                  = f.date_select :birthday, :start_year => 1920, :class => 'form-control'
+
+            .row
+              .col-md-3
+                .form-group
+                  = f.label :emergency_contact_name, :class => 'control-label'
+                  = f.text_field :emergency_contact_name, :class => 'form-control'
+              .col-md-1
+              .col-md-3
+                .form-group
+                  = f.label :emergency_contact_phone, :class => 'control-label'
+                  = f.text_field :emergency_contact_phone, :class => 'form-control'
+
+            .acc-wizard-step
+              %button.btn{:type => "reset"} Go Back
+              %button.btn.btn-primary{:type => "submit"} Next Step
+
+      .panel.panel-default
+        #headingThree.panel-heading{:role => "tab"}
+          %h4.panel-title
+            %a.collapsed{"aria-controls" => "generalQuestions", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#generalQuestions"}
+              General Questions
+        #generalQuestions.panel-collapse.collapse.in{"aria-labelledby" => "headingThree", :role => "tabpanel"}
+          .panel-body.accordionSpacer
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Any Physical Limitations?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :physical_limitations, "Yes", :class => 'control-label'
+                      = f.radio_button :physical_limitations, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :physical_limitations, "No", :class => 'control-label'
+                      = f.radio_button :physical_limitations, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :physical_limitations_describe,"Describe your physical Limitations", :class => 'control-label'
+                  = f.text_field :physical_limitations_describe, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Any Allergies?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :allergies, "Yes", :class => 'control-label'
+                      = f.radio_button :allergies, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :allergies, "No", :class => 'control-label'
+                      = f.radio_button :allergies, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :allergies_describe, "Describe your allergies", :class => 'control-label'
+                  = f.text_field :allergies_describe, :class => 'form-control'
+
+
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Any Surgery or Injury?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :surgery_or_injury, "Yes", :class => 'control-label'
+                      = f.radio_button :surgery_or_injury, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :surgery_or_injury, "No", :class => 'control-label'
+                      = f.radio_button :surgery_or_injury, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :surgery_or_injury_describe, "Describe any previous surgery or injury", :class => 'control-label'
+                  = f.text_field :surgery_or_injury_describe, :class => 'form-control'
+
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you have any WHIMIS training?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :whimis_awareness, "Yes", :class => 'control-label'
+                      = f.radio_button :whimis_awareness, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :whimis_awareness, "No", :class => 'control-label'
+                      = f.radio_button :whimis_awareness, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :whimis_describe, "Describe any previous WHIMIS training", :class => 'control-label'
+                  = f.text_field :whimis_describe, :class => 'form-control'
+
+
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you have a valid SIN?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :sin_number, "Yes", :class => 'control-label'
+                      = f.radio_button :sin_number, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :sin_number, "No", :class => 'control-label'
+                      = f.radio_button :sin_number, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :sin_number_expiry,"Enter the expiry date of you SIN", :class => 'control-label'
+                  = f.date_select :sin_number_expiry,:start_year => 2014 ,:class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you have the legal right to work in Canada?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :legal_to_work, "Yes", :class => 'control-label'
+                      = f.radio_button :legal_to_work, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :legal_to_work, "No", :class => 'control-label'
+                      = f.radio_button :legal_to_work, false, :checked => true, :value => false, :class => 'form-control'
+
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you have a driver's license?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :driver_license, "Yes", :class => 'control-label'
+                      = f.radio_button :driver_license, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :driver_license, "No", :class => 'control-label'
+                      = f.radio_button :driver_license, false, :checked => true, :value => false, :class => 'form-control'
+              .col-md-7
+                .row
+                  .col-sm-3
+                    %h4 License type
+                  .col-sm-2
+                    .form-group
+                      = f.label :license_g1,"G1", :class => 'control-label'
+                      = f.check_box :license_g1, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :license_g2,"G2", :class => 'control-label'
+                      = f.check_box :license_g2, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :license_g,"Full G", :class => 'control-label'
+                      = f.check_box :license_g, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you own a car?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :car_owner, "Yes", :class => 'control-label'
+                      = f.radio_button :car_owner, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :car_owner, "No", :class => 'control-label'
+                      = f.radio_button :car_owner, false, :checked => true, :value => false, :class => 'form-control'
+              .col-md-7
+                .row
+                  .col-sm-3
+                    %h4 Car type
+                  .col-sm-2
+                    .form-group
+                      = f.label :is_car,"Car", :class => 'control-label'
+                      = f.check_box :is_car, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :is_van,"Van", :class => 'control-label'
+                      = f.check_box :is_van, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :is_pickup,"Pick-Up", :class => 'control-label'
+                      = f.check_box :is_pickup, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you own safety boots?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_safety_boots, "Yes", :class => 'control-label'
+                      = f.radio_button :own_safety_boots, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_safety_boots, "No", :class => 'control-label'
+                      = f.radio_button :own_safety_boots, false, :checked => true, :value => false, :class => 'form-control'
+
+
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Are your safety boots CSA approved?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_safety_boots_csa, "Yes", :class => 'control-label'
+                      = f.radio_button :own_safety_boots_csa, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_safety_boots_csa, "No", :class => 'control-label'
+                      = f.radio_button :own_safety_boots_csa, false, :checked => true, :value => false, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Do you own a helmet?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_helmet, "Yes", :class => 'control-label'
+                      = f.radio_button :own_helmet, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :own_helmet, "No", :class => 'control-label'
+                      = f.radio_button :own_helmet, false, :checked => true, :value => false, :class => 'form-control'
+
+            %hr
+
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Are you registered with other agencies?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :registered_other_agencies, "Yes", :class => 'control-label'
+                      = f.radio_button :registered_other_agencies, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :registered_other_agencies, "No", :class => 'control-label'
+                      = f.radio_button :registered_other_agencies, false, :checked => true, :value => false, :class => 'form-control'
+
+              .col-md-7
+                .form-group
+                  = f.label :other_agencies_describe,"List other agencies you are registered with", :class => 'control-label'
+                  = f.text_field :other_agencies_describe, :class => 'form-control'
+
+              .acc-wizard-step
+                %button.btn{:type => "reset"} Go Back
+                %button.btn.btn-primary{:type => "submit"} Next Step
+
+      .panel.panel-default
+        #headingFourth.panel-heading{:role => "tab"}
+          %h4.panel-title
+            %a.collapsed{"aria-controls" => "educationAndWorkHistory", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#educationAndWorkHistory"}
+              Education and Work History
+        #educationAndWorkHistory.panel-collapse.collapse.in{"aria-labelledby" => "headingFourth", :role => "tabpanel"}
+          .panel-body.accordionSpacer
+            .row
+              .col-md-5
+                .row
+                  .col-sm-6
+                    %h4 Are you a student?
+                  .col-sm-2
+                  .col-sm-2
+                    .form-group
+                      = f.label :is_student, "Yes", :class => 'control-label'
+                      = f.radio_button :is_student, true, :value => true, :class => 'form-control'
+                  .col-sm-2
+                    .form-group
+                      = f.label :is_student, "No", :class => 'control-label'
+                      = f.radio_button :is_student, false, :checked => true, :value => false, :class => 'form-control'
+            %hr
+
+            .row
+              .col-sm-4
+                %h4 Select highest level of education
+              .col-sm-1
+                .form-group
+                  = f.label :education_primary,"Primary", :class => 'control-label'
+                  = f.check_box :education_primary, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :education_secundary,"Highschool", :class => 'control-label'
+                  = f.check_box :education_secundary, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :education_college,"College", :class => 'control-label'
+                  = f.check_box :education_college, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :education_university,"University", :class => 'control-label'
+                  = f.check_box :education_university, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :education_other,"Other", :class => 'control-label'
+                  = f.check_box :education_other, :class => 'form-control'
+
+              .col-md-3
+                .form-group
+                  .form-group
+                    = f.label :education_title, :class => 'control-label'
+                    = f.text_field :education_title, :class => 'form-control'
+
+
+            %hr
+
+            .row
+              .col-sm-4
+                %h4 Select your English level
+              .col-sm-1
+                .form-group
+                  = f.label :english_fluent,"Fluent", :class => 'control-label'
+                  = f.check_box :english_fluent, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :english_well,"Well", :class => 'control-label'
+                  = f.check_box :english_well, :class => 'form-control'
+              .col-sm-2
+                .form-group
+                  = f.label :english_dificulty,"With Dificulty", :class => 'control-label'
+                  = f.check_box :english_dificulty, :class => 'form-control'
+
+
+            %hr
+
+            .row
+              .col-sm-3
+                %h4 Other Language level
+              .col-sm-3
+                .form-group
+                  = f.label :other_language,"Other Language", :class => 'control-label'
+                  = f.text_field :other_language, :class => 'form-control'
+              .col-sm-1
+              .col-sm-1
+                .form-group
+                  = f.label :other_language_fluent,"Fluent", :class => 'control-label'
+                  = f.check_box :other_language_fluent, :class => 'form-control'
+              .col-sm-1
+                .form-group
+                  = f.label :other_language_well,"Well", :class => 'control-label'
+                  = f.check_box :other_language_well, :class => 'form-control'
+              .col-sm-2
+                .form-group
+                  = f.label :other_language_dificulty,"With Dificulty", :class => 'control-label'
+                  = f.check_box :other_language_dificulty, :class => 'form-control'
+
+            .form-group
+              = f.label :work_history,"Describe your work experience", :class => 'control-label'
+              = f.text_area :work_history, :class => 'form-control'
+
+            .form-group
+              = f.label :how_find_out_solamac, "How did you hear about Solamac?", :class => 'control-label'
+              = f.text_area :how_find_out_solamac, :class => 'form-control'
+
+            .acc-wizard-step
+              %button.btn{:type => "reset"} Go Back
+              - if @show_button
+                = f.submit "Finish", :class => 'btn btn-primary'
