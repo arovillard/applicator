@@ -30,7 +30,7 @@ gem 'haml-rails'
 
 gem 'humanize_boolean'
 
-gem 'client_side_validations'
+gem 'ransack'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

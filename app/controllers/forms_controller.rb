@@ -5,7 +5,8 @@ class FormsController < ApplicationController
   # GET /forms
   # GET /forms.json
   def index
-    @forms = Form.all
+    @q = Form.ransack(params[:q])
+    @forms = @q.result(distinct: true)
   end
 
   # GET /forms/1
@@ -27,6 +28,7 @@ class FormsController < ApplicationController
   # POST /forms
   # POST /forms.json
   def create
+    @show_button = true
     @form = Form.new(form_params)
 
     respond_to do |format|

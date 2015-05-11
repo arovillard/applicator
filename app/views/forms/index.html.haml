@@ -4,21 +4,25 @@
       %span.glyphicon.glyphicon-plus
       New Form
     %h1 Applications
+  .searchContainer
+    = search_form_for @q do |f|
+      = f.search_field :position_required_or_first_name_or_last_name_or_main_intersection_or_postal_code_or_email_or_cellphone_or_house_phone_or_education_title_or_other_language_cont, :class => 'searchBox'
+      = f.submit
 
   .table-responsive
     %table.table.table-striped.table-bordered.table-hover
       %thead
         %tr
-          %th Application Date
-          %th Last name
-          %th First name
+          %th= sort_link(@q, :created_at, 'Application Date', default_order: :desc)
+          %th= sort_link(@q, :last_name, 'Last name')
+          %th= sort_link(@q, :first_name, 'First name')
           %th Age
           %th Main intersection
           %th Cellphone
           %th House phone
           %th Email
-          %th Legal to work
-          %th Car owner
+          %th= sort_link(@q, :legal_to_work, 'Legal to work', default_order: :desc)
+          %th= sort_link(@q, :car_owner, 'Car owner', default_order: :desc)
           %th
           %th
           %th
