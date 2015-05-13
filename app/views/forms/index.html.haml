@@ -1,48 +1,48 @@
-.masterContainer
-  .page-header
-    = link_to new_form_path, :class => 'btn btn-primary' do
-      %span.glyphicon.glyphicon-plus
-      New Form
-    %h1 Applications
-  .searchContainer
-    = search_form_for @q do |f|
-      = f.search_field :position_required_or_first_name_or_last_name_or_main_intersection_or_postal_code_or_email_or_cellphone_or_house_phone_or_education_title_or_other_language_cont, :class => 'searchBox'
-      = f.submit
 
-  .table-responsive
-    %table.table.table-striped.table-bordered.table-hover
-      %thead
+.page-header
+  = link_to new_form_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Form
+  %h1 Applications
+.searchContainer
+  = search_form_for @q do |f|
+    = f.search_field :position_required_or_first_name_or_last_name_or_main_intersection_or_postal_code_or_email_or_cellphone_or_house_phone_or_education_title_or_other_language_cont, :class => 'searchBox'
+    = f.submit
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= sort_link(@q, :created_at, 'Application Date', default_order: :asc)
+        %th= sort_link(@q, :last_name, 'Last name')
+        %th= sort_link(@q, :first_name, 'First name')
+        %th Age
+        %th Main intersection
+        %th Cellphone
+        %th House phone
+        %th Email
+        %th= sort_link(@q, :legal_to_work, 'Legal to work', default_order: :desc)
+        %th= sort_link(@q, :car_owner, 'Car owner', default_order: :desc)
+        %th
+        %th
+        %th
+
+    %tbody
+      - @forms.each do |form|
+        - what_age = compute_age(form)
         %tr
-          %th= sort_link(@q, :created_at, 'Application Date', default_order: :desc)
-          %th= sort_link(@q, :last_name, 'Last name')
-          %th= sort_link(@q, :first_name, 'First name')
-          %th Age
-          %th Main intersection
-          %th Cellphone
-          %th House phone
-          %th Email
-          %th= sort_link(@q, :legal_to_work, 'Legal to work', default_order: :desc)
-          %th= sort_link(@q, :car_owner, 'Car owner', default_order: :desc)
-          %th
-          %th
-          %th
+          %td= form.created_at.strftime('%F')
+          %td= form.last_name
+          %td= form.first_name
+          %td= what_age
+          %td= form.main_intersection
+          %td= form.cellphone
+          %td= form.house_phone
+          %td= form.email
+          %td= form.legal_to_work.humanize
+          %td= form.car_owner.humanize
+          %td= link_to 'Show', form_path(form, :anchor =>"application")
+          %td= link_to 'Edit', edit_form_path(form)
+          %td= link_to 'Destroy', form, :data => { confirm: 'Are you sure?' }, :method => :delete
 
-      %tbody
-        - @forms.each do |form|
-          - what_age = compute_age(form)
-          %tr
-            %td= form.created_at.strftime('%F')
-            %td= form.last_name
-            %td= form.first_name
-            %td= what_age
-            %td= form.main_intersection
-            %td= form.cellphone
-            %td= form.house_phone
-            %td= form.email
-            %td= form.legal_to_work.humanize
-            %td= form.car_owner.humanize
-            %td= link_to 'Show', form_path(form, :anchor =>"application")
-            %td= link_to 'Edit', edit_form_path(form)
-            %td= link_to 'Destroy', form, :data => { confirm: 'Are you sure?' }, :method => :delete
-
-  = paginate @forms
+= paginate @forms

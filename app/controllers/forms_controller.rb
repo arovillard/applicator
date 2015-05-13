@@ -1,4 +1,6 @@
 class FormsController < ApplicationController
+  before_action :authenticate_user!, only: [:index ,:show, :edit, :update, :destroy]
+  protect_from_forgery with: :exception
   before_action :set_form, only: [:show, :edit, :update, :destroy]
   helper_method :compute_age
 

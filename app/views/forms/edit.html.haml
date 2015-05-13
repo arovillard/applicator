@@ -1,12 +1,11 @@
-.masterContainer
-  .page-header
-    = link_to forms_path, :class => 'btn btn-default' do
-      %span.glyphicon.glyphicon-list-alt
-      Back
-    = link_to @form, :class => 'btn btn-primary' do
-      %span.glyphicon.glyphicon-info-sign
-      Show
-    %h1 Editing form
+.page-header
+  = link_to forms_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to @form, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-info-sign
+    Show
+  %h1 Editing form
 
 
-  = render 'form'
+= render 'form'
