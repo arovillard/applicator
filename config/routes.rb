@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'forms#index'
 
+  resources :comments, :only => [:create, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

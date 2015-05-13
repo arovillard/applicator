@@ -4,4 +4,5 @@ class Form < ActiveRecord::Base
   validates :main_intersection, presence: true
   validates :email, presence: true
   validates :cellphone, presence: true
+  acts_as_commentable
 end

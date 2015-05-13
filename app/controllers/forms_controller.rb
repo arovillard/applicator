@@ -1,8 +1,9 @@
 class FormsController < ApplicationController
   before_action :authenticate_user!, only: [:index ,:show, :edit, :update, :destroy]
-  protect_from_forgery with: :exception
   before_action :set_form, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery with: :exception
   helper_method :compute_age
+
 
   # GET /forms
   # GET /forms.json
@@ -15,6 +16,8 @@ class FormsController < ApplicationController
   # GET /forms/1
   # GET /forms/1.json
   def show
+    @comments = @form.comment_threads.order('created_at desc')
+    @new_comment = Comment.build_from(@form, current_user.id, "")
   end
 
   # GET /forms/new

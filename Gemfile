@@ -36,7 +36,11 @@ gem 'kaminari'
 
 gem 'devise'
 
+gem 'simple_form'
+
 gem 'devise-bootstrap-views'
+
+gem 'acts_as_commentable_with_threading'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
