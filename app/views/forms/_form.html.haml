@@ -26,7 +26,7 @@
       .panel.panel-default
         #headingOne.panel-heading{:role => "tab"}
           %h4.panel-title
-            %a{"aria-controls" => "desiredPosition", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#desiredPosition"}
+            %a{"aria-controls" => "desiredPosition", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#desiredPosition"}
               Desired Position and Availability
         #desiredPosition.panel-collapse.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel"}
           .panel-body.accordionSpacer
@@ -81,7 +81,7 @@
       .panel.panel-default
         #headingTwo.panel-heading{:role => "tab"}
           %h4.panel-title
-            %a.collapsed{"aria-controls" => "personalInformation", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#personalInformation"}
+            %a.collapsed{"aria-controls" => "personalInformation", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#personalInformation"}
               Personal Information
         #personalInformation.panel-collapse.collapse.in{"aria-labelledby" => "headingTwo", :role => "tabpanel"}
           .panel-body.accordionSpacer

@@ -6,7 +6,8 @@ class FormsController < ApplicationController
   # GET /forms.json
   def index
     @q = Form.ransack(params[:q])
-    @forms = @q.result(distinct: true)
+    @forms = @q.result(distinct: true).order(created_at: :desc).page params[:page]
+
   end
 
   # GET /forms/1
