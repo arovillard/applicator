@@ -33,6 +33,7 @@ $(window).ready(function() {
   );
 })
 
+
 jQuery(function() {
   return $(".comment-form").on("ajax:beforeSend", function(evt, xhr, settings) {
     return $(this).find('textarea').addClass('uneditable-input').attr('disabled', 'disabled');

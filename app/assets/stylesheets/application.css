@@ -10,12 +10,30 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
  *= require_tree
  *= require_self
+ *=require_tree ../../../vendor/assets/stylesheets
  */
 
 .masterContainer{
-  padding: 0 100px;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto
+}
+
+.custom-search-field{
+  padding: 7px;
+}
+
+.user-status-links{
+  text-align: center;
+  background: antiquewhite;
+  padding: 10px;
+}
+
+.logoImage {
+  max-width: 200px;
 }
 
 .accordionSpacer{
@@ -43,4 +61,321 @@
 
 .searchContainer {
   margin: 40px 0 20px 0;
+}
+
+.tooltip {
+  opacity: 1;
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.icon{
+  display: inline-block;
+  text-align: center;
+  font-size: 28px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 3px 1.5px;
+}
+.icon.circle,
+.icon.square{
+  background-color: #FFFFFF;
+  border: 1px solid #E3E3E3;
+  color: #292929;
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+       -o-border-radius: 2px;
+          border-radius: 2px;
+}
+.icon.circle:hover,
+.icon.square:hover{
+  background-color: #F7F7F7;
+  border-color: #E3E3E3;
+}
+.icon.circle{
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+       -o-border-radius: 50%;
+          border-radius: 50%;
+}
+
+/* Sizes */
+.icon.small{
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+.icon.circle.small,
+.icon.square.small{
+  font-size: 14px;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+}
+.icon.medium{
+  font-size: 42px;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+}
+.icon.circle.medium,
+.icon.square.medium{
+  font-size: 18px;
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+}
+.icon.large{
+  font-size: 56px;
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+}
+.icon.circle.large,
+.icon.square.large{
+  font-size: 28px;
+  width: 62px;
+  height: 62px;
+  line-height: 62px;
+}
+.icon.big{
+  font-size: 70px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
+.icon.circle.big,
+.icon.square.big{
+  font-size: 42px;
+  width: 78px;
+  height: 78px;
+  line-height: 78px;
+}
+.icon.huge{
+  font-size: 84px;
+  width: 94px;
+  height: 94px;
+  line-height: 94px;
+}
+.icon.circle.huge,
+.icon.square.huge{
+    font-size: 56px;
+    width: 92px;
+    height: 92px;
+    line-height: 92px;
+}
+
+/* Black icon */
+.icon.primary{
+    color: #3498DB;
+}
+.icon.circle.primary,
+.icon.square.primary{
+    background-color: #3498DB;
+    border-color: #3498DB;
+    color: #FFFFFF;
+}
+.icon.circle.primary:hover,
+.icon.square.primary:hover{
+    background-color: #3486BC;
+    border-color: #3486BC;
+    color: #FFFFFF;
+}
+
+/* Black icon */
+.icon.black{
+    color: #383838;
+}
+.icon.circle.black,
+.icon.square.black{
+    background-color: #686868;
+    border-color: #686868;
+    color: #FFFFFF;
+}
+.icon.circle.black:hover,
+.icon.square.black:hover{
+    background-color: #636363;
+    border-color: #636363;
+    color: #FFFFFF;
+}
+
+/* Blue icon */
+.icon.blue{
+    color: #00ACEE;
+}
+.icon.circle.blue,
+.icon.square.blue{
+    background-color: #00ACEE;
+    border-color: #00ACEE;
+    color: #FFFFFF;
+}
+.icon.circle.blue:hover,
+.icon.square.blue:hover{
+    background-color: #02A1DB;
+    border-color: #02A1DB;
+    color: #FFFFFF;
+}
+
+/* Green icon */
+.icon.green{
+    color: #58B25E;
+}
+.icon.circle.green,
+.icon.square.green{
+    background-color: #58B25E;
+    border-color: #58B25E;
+    color: #FFFFFF;
+}
+.icon.circle.green:hover,
+.icon.square.green:hover{
+    background-color: #51A057;
+    border-color: #51A057;
+    color: #FFFFFF;
+}
+
+/* Orange icon */
+.icon.orange{
+    color: #EF7B45;
+}
+.icon.circle.orange,
+.icon.square.orange{
+    background-color: #EF7B45;
+    border-color: #EF7B45;
+    color: #FFFFFF;
+}
+.icon.circle.orange:hover,
+.icon.square.orange:hover{
+    background-color: #DD7544;
+    border-color: #DD7544;
+    color: #FFFFFF;
+}
+
+/* Purple icon */
+.icon.purple{
+    color: #A085C6;
+}
+.icon.circle.purple,
+.icon.square.purple{
+    background-color: #A085C6;
+    border-color: #A085C6;
+    color: #FFFFFF;
+}
+.icon.circle.purple:hover,
+.icon.square.purple:hover{
+    background-color: #9880BC;
+    border-color: #9880BC;
+    color: #FFFFFF;
+}
+
+/* Red icon */
+.icon.red{
+    color: #F35958;
+}
+.icon.circle.red,
+.icon.square.red{
+    background-color: #F35958;
+    border-color: #F35958;
+    color: #FFFFFF;
+}
+.icon.circle.red:hover,
+.icon.square.red:hover{
+    background-color: #DD5252;
+    border-color: #DD5252;
+    color: #FFFFFF;
+}
+
+/* Yellow icon */
+.icon.yellow{
+    color: #FBAD2F;
+}
+.icon.circle.yellow,
+.icon.square.yellow{
+    background-color: #FBAD2F;
+    border-color: #FBAD2F;
+    color: #FFFFFF;
+}
+.icon.circle.yellow:hover,
+.icon.square.yellow:hover{
+    background-color: #E29C2B;
+    border-color: #E29C2B;
+    color: #FFFFFF;
+}
+
+
+
+
+
+.nav ul,
+.nav *{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav a{
+    display: block;
+    text-decoration: none;
+}
+.nav a:hover{
+    text-decoration: none;
+}
+.nav li{
+    position: relative;
+    text-align: left;
+}
+.nav li.full{
+    position: static;
+}
+.nav .dropdown ul{
+    position: absolute;
+    display: none;
+    /*top: 100%;*/
+    z-index: 99;
+    width: 150px;
+}
+.nav .dropdown li:hover > ul{
+    display: block;
+}
+.nav .dropdown li.mega-menu > ul{
+    width: auto;
+}
+.nav .dropdown li.mega-menu.full ul{
+    width: 100%;
+    left: 0;
+}
+.nav .dropdown li.mega-menu:hover > ul{
+    display: table;
+}
+.nav .dropdown li.mega-menu > ul > li{
+    display: table-cell;
+}
+.nav .dropdown li.mega-menu.full > ul ul{
+    width: auto;
+}
+.nav .dropdown li.mega-menu ul ul{
+    position: static;
+    display: block;
+}
+.nav .dropdown li.reserved ul{
+    right: 0;
+}
+
+.nav.horizontal > ul > li{
+    display: inline-block;
+}
+.nav.horizontal .dropdown ul ul{
+    top: 0;
+    left: 100%;
+}
+.nav.horizontal .dropdown .reserved ul ul{
+    top: 0;
+    left: auto;
+    right: 100%;
 }

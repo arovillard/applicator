@@ -15,25 +15,37 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    .masterContainer
-      - if user_signed_in?
-        Logged in as
-        = succeed "." do
-          %strong= current_user.email
-        = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
-        |
-        \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}
-      - else
-        = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-        |
-        \#{link_to "Login", new_user_session_path, :class => 'navbar-link'}
-    .masterContainer
-      - flash.each do |name, msg|
-        = content_tag :div, :class => "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do
-          %button.close{:type => "button", :data => {:dismiss => "alert"} }
-            %span{:aria => {:hidden => "true"} } &times;
-            %span.sr-only Close
-          = msg
 
+  %body
+    %header#site-header.header.section.light
+      .container
+        .row
+          #logo.col-29
+            %a{:href => "http://www.solamac.com"}
+              = image_tag("Solamac-Logo-Colour", :class => "logoImage")
+
+          #header-widgets.col-7
+            %nav#header-social.text-right
+              %a.icon.circle.tooltip{:href => "#", :title => "Find us on Facebook"}
+                %i.fa.fa-facebook
+              %a.icon.circle.tooltip{:href => "#", :title => "Follow us on Twitter"}
+                %i.fa.fa-twitter
+              %a.icon.circle.tooltip{:href => "#", :title => "Google Plus"}
+                %i.fa.fa-google-plus
+
+            %nav#site-nav.nav.horizontal.text-right
+              %ul.dropdown
+                %li.mega-menu.full
+                  %a{:href => "http://www.solamac.com/employer-services.html"} Employers
+                %li.mega-menu
+                  %a{:href => "http://www.solamac.com/candidate-services.html"} Candidates
+                %li
+                  %a{:href => "http://www.solamac.com/work-in-canada.html"} Work In Canada
+                %li
+                  %a{:href => "http://www.solamac.com/contact.html"} Contact
+                %li
+                  = link_to('Apply', new_form_path)
+
+
+    .masterContainer
       = yield

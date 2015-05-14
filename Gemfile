@@ -42,6 +42,8 @@ gem 'devise-bootstrap-views'
 
 gem 'acts_as_commentable_with_threading'
 
+gem "font-awesome-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

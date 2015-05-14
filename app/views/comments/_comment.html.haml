@@ -2,6 +2,6 @@
   %hr
   = link_to "×", comment_path(comment), :method => :delete, :remote => true, :data => {:confirm => "Are you sure you want to remove this comment?"}, :disable_with => "×", :class => 'close'
   %h4
-    = comment.user.email
+    = comment.user.first_name
     %small= " | " + comment.updated_at.to_formatted_s(:long_ordinal) + " hs"
   %p= comment.body

@@ -1,3 +1,4 @@
+= render 'user_login'
 
 .page-header
   = link_to new_form_path, :class => 'btn btn-primary' do
@@ -7,7 +8,7 @@
 .searchContainer
   = search_form_for @q do |f|
     = f.search_field :position_required_or_first_name_or_last_name_or_main_intersection_or_postal_code_or_email_or_cellphone_or_house_phone_or_education_title_or_other_language_cont, :class => 'searchBox'
-    = f.submit
+    = f.submit :class => 'custom-search-field'
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
@@ -20,7 +21,7 @@
         %th Main intersection
         %th Cellphone
         %th House phone
-        %th Email
+        %th Notes
         %th= sort_link(@q, :legal_to_work, 'Legal to work', default_order: :desc)
         %th= sort_link(@q, :car_owner, 'Car owner', default_order: :desc)
         %th
@@ -30,6 +31,7 @@
     %tbody
       - @forms.each do |form|
         - what_age = compute_age(form)
+        - comments = form.comment_threads
         %tr
           %td= form.created_at.strftime('%F')
           %td= form.last_name
@@ -38,10 +40,10 @@
           %td= form.main_intersection
           %td= form.cellphone
           %td= form.house_phone
-          %td= form.email
+          %td= link_to comments.count, form_path(form, :anchor =>"comments-section")
           %td= form.legal_to_work.humanize
           %td= form.car_owner.humanize
-          %td= link_to 'Show', form_path(form, :anchor =>"application")
+          %td= link_to 'Show', form_path(form, :anchor =>"personalInformation")
           %td= link_to 'Edit', edit_form_path(form)
           %td= link_to 'Destroy', form, :data => { confirm: 'Are you sure?' }, :method => :delete
 

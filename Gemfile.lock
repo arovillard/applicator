@@ -70,6 +70,8 @@ GEM
     devise-bootstrap-views (0.0.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -116,7 +118,7 @@ GEM
     pg (0.18.1)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
-    rack (1.6.0)
+    rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -205,6 +207,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-bootstrap-views
+  font-awesome-rails
   haml-rails
   humanize_boolean
   jbuilder (~> 2.0)
