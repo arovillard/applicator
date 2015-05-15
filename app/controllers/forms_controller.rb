@@ -20,6 +20,9 @@ class FormsController < ApplicationController
     @new_comment = Comment.build_from(@form, current_user.id, "")
   end
 
+  def thankyou
+  end
+
   # GET /forms/new
   def new
     @form = Form.new
@@ -39,7 +42,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.html { redirect_to @form, notice: 'Form was successfully created.' }
+        format.html { redirect_to thankyou_path, notice: 'Form was successfully created.' }
         format.json { render :show, status: :created, location: @form }
       else
         format.html { render :new }

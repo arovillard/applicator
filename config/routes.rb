@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :forms
+  resources :comments, :only => [:create, :destroy]
+  get '/thankyou', :to => 'forms#thankyou'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'forms#new'
 
-  resources :comments, :only => [:create, :destroy]
 
   as :user do
     get "/login" => "devise/sessions#new"
