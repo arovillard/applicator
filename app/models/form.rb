@@ -5,5 +5,7 @@ class Form < ActiveRecord::Base
   validates :main_intersection, presence: true
   validates :email, presence: true
   validates :cellphone, presence: true
+  validates :terms_and_conditions, presence: true
+
   acts_as_commentable
 end

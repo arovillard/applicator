@@ -15,6 +15,20 @@
  *= require_self
  *=require_tree ../../../vendor/assets/stylesheets
  */
+.terms {
+  margin-top: 30px;
+  text-align: center;
+  color: #08c;
+  cursor: pointer;
+}
+
+#termsAndConditions{
+  display: none;
+}
+
+.form-control{
+  border-color: #ccc !important;
+}
 
 .masterContainer{
   width: 1200px;
