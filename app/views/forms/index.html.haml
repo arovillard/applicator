@@ -24,6 +24,7 @@
         %th Notes
         %th= sort_link(@q, :legal_to_work, 'Legal to work', default_order: :desc)
         %th= sort_link(@q, :car_owner, 'Car owner', default_order: :desc)
+        %th= sort_link(@q, :resume, 'Resume')
         %th
         %th
         %th
@@ -43,6 +44,10 @@
           %td= link_to comments.count, form_path(form, :anchor =>"comments-section")
           %td= form.legal_to_work.humanize
           %td= form.car_owner.humanize
+          - if form.resume.url
+            %td= link_to('Resume', form.resume.url, :target => "_blank")
+          -else
+            %td
           %td= link_to 'Show', form_path(form, :anchor =>"personalInformation")
           %td= link_to 'Edit', edit_form_path(form)
           %td= link_to 'Destroy', form, :data => { confirm: 'Are you sure?' }, :method => :delete

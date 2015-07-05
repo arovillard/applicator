@@ -36,6 +36,12 @@ gem 'devise'
 
 gem 'simple_form'
 
+gem 'carrierwave'
+
+gem 'fog'
+
+gem "figaro"
+
 gem 'devise-bootstrap-views'
 
 gem 'acts_as_commentable_with_threading'
